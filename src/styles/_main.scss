@@ -1,0 +1,106 @@
+$colour: #ec118f;
+$triad: #118feb;
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+::selection {
+  background: transparent;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  background: darken($triad, 5%);
+  background: -webkit-linear-gradient(top left, desaturate($triad, 50%), darken($triad, 5%));
+  background:    -moz-linear-gradient(top left, desaturate($triad, 50%), darken($triad, 5%));
+  background:      -o-linear-gradient(top left, desaturate($triad, 50%), darken($triad, 5%));
+  background:     -ms-linear-gradient(top left, desaturate($triad, 50%), darken($triad, 5%));
+  background:         linear-gradient(top left, desaturate($triad, 50%), darken($triad, 5%));
+  -webkit-box-shadow: 0 0 120px rgba(0, 0, 0, 0.8) inset;
+          box-shadow: 0 0 120px rgba(0, 0, 0, 0.8) inset;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.tracker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  text-align: center;
+  font-size: 32px;
+  line-height: 0.75;
+  -webkit-animation: pulse 3s infinite ease-in-out;
+     -moz-animation: pulse 3s infinite ease-in-out;
+      -ms-animation: pulse 3s infinite ease-in-out;
+       -o-animation: pulse 3s infinite ease-in-out;
+          animation: pulse 3s infinite ease-in-out;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@-ms-keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@-o-keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
