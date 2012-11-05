@@ -21,7 +21,8 @@ var mysteron = (function () {
       eventMove = hasTouch ? 'touchmove' : 'mousemove',
       eventEnd = hasTouch ? 'touchend' : 'mouseup',
       ampTracker,
-      pitchTracker;
+      pitchTracker,
+      settings;
 
   return {
 
@@ -37,6 +38,7 @@ var mysteron = (function () {
       }
 
       touchpad = doc.getElementsByTagName('body')[0];
+      settings = doc.getElementById('settings');
 
       nodes.volume = audio.createGainNode();
       nodes.volume.gain.value = 0;
@@ -44,19 +46,12 @@ var mysteron = (function () {
       osc.connect(nodes.volume);
       nodes.volume.connect(audio.destination);
 
-      ampTracker = document.getElementById('amp');
-      pitchTracker = document.getElementById('pitch');
+      settings.addEventListener(eventStart, function(e){
+        e.stopPropagation();
+      }, false);
+      settings.addEventListener('click', mysteron.tweak, false);
 
-      var e = {};
-
-      e.pageY = ampTracker.offsetTop;
-      e.pageX = ampTracker.offsetLeft;
-
-      mysteron.start(e);
-
-      setTimeout(function(){
-        mysteron.stop();
-      }, 200);
+      mysteron.track();
 
       touchpad.addEventListener(eventStart, mysteron.start, false);
 
@@ -68,8 +63,35 @@ var mysteron = (function () {
 
     },
 
+    tweak: function(e){
+
+      e.preventDefault();
+
+    },
+
+    track: function(){
+
+      var e = {},
+          doc = document;
+
+      ampTracker = doc.getElementById('amp');
+      pitchTracker = doc.getElementById('pitch');
+
+      e.pageY = ampTracker.offsetTop;
+      e.pageX = ampTracker.offsetLeft;
+
+      mysteron.start(e);
+
+      setTimeout(function(){
+        mysteron.stop();
+      }, 200);
+
+    },
+
     scale: function(value, oldMin, oldMax, newMin, newMax){
+
       return (value / ((oldMax - oldMin) / (newMax - newMin))) + newMin;
+
     },
 
     play: function(e){

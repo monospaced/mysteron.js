@@ -32,6 +32,34 @@ body {
           user-select: none;
 }
 
+.control {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 44px;
+  height: 44px;
+  color: rgba(255, 255, 255, 0.125);
+  text-align: center;
+  text-decoration: none;
+  font-size: 32px;
+  line-height: 1.375;
+  cursor: pointer;
+  -webkit-transition: color 250ms ease-in-out;
+     -moz-transition: color 250ms ease-in-out;
+      -ms-transition: color 250ms ease-in-out;
+       -o-transition: color 250ms ease-in-out;
+          transition: color 250ms ease-in-out;
+}
+
+.control:hover {
+  color: rgba(255, 255, 255, 0.25);
+  -webkit-transition: color 25ms ease-in-out;
+     -moz-transition: color 25ms ease-in-out;
+      -ms-transition: color 25ms ease-in-out;
+       -o-transition: color 25ms ease-in-out;
+          transition: color 25ms ease-in-out;
+}
+
 .tracker {
   position: absolute;
   top: 50%;
