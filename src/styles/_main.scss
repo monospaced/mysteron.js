@@ -4,6 +4,7 @@ $triad: #118feb;
 html {
   overflow: hidden;
   height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 ::selection {
@@ -16,6 +17,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  overflow: hidden;
   height: 100%;
   background: darken($triad, 5%);
   background: -webkit-linear-gradient(top left, desaturate($triad, 50%), darken($triad, 5%));
@@ -34,8 +36,8 @@ body {
 
 .control {
   position: absolute;
-  right: 1px;
-  bottom: 1px;
+  right: 0;
+  bottom: 0;
   width: 44px;
   height: 44px;
   color: rgba(255, 255, 255, 0.125);
