@@ -16,13 +16,15 @@ var mysteron = (function () {
       minFreq = 16.35, // C0
       maxFreq = 4186.01, // C8
       mouseDown = 0,
+      tweaking = false,
       hasTouch = 'ontouchstart' in window || 'createTouch' in document,
       eventStart = hasTouch ? 'touchstart' : 'mousedown',
       eventMove = hasTouch ? 'touchmove' : 'mousemove',
       eventEnd = hasTouch ? 'touchend' : 'mouseup',
       ampTracker,
       pitchTracker,
-      settings;
+      controls,
+      toggle;
 
   return {
 
@@ -38,18 +40,17 @@ var mysteron = (function () {
       }
 
       touchpad = doc.getElementsByTagName('body')[0];
-      settings = doc.getElementById('settings');
+      controls = doc.getElementById('controls');
+      toggle = doc.getElementById('toggle');
 
       nodes.volume = audio.createGainNode();
       nodes.volume.gain.value = 0;
 
-      osc.connect(nodes.volume);
-      nodes.volume.connect(audio.destination);
+      mysteron.connect();
 
-      settings.addEventListener(eventStart, function(e){
-        e.stopPropagation();
-      }, false);
-      settings.addEventListener('click', mysteron.tweak, false);
+      toggle.addEventListener('click', mysteron.flip, false);
+
+      mysteron.tweak();
 
       mysteron.track();
 
@@ -57,15 +58,79 @@ var mysteron = (function () {
 
       if (hasTouch) {
         doc.body.addEventListener('touchmove', function(e){
-          e.preventDefault();
+          if (e.target.tagName !== 'INPUT') {
+            e.preventDefault();
+          }
         });
       }
 
+      controls.addEventListener(eventStart, function(e){
+        e.stopPropagation();
+      }, false);
+
+      toggle.addEventListener(eventStart, function(e){
+        e.stopPropagation();
+      }, false);
+
     },
 
-    tweak: function(e){
+    connect: function(){
+
+      osc.connect(nodes.volume);
+      nodes.volume.connect(audio.destination);
+
+    },
+
+    flip: function(e){
 
       e.preventDefault();
+
+      var opacity = tweaking ? 0 : 0.8;
+
+      move(controls)
+        .set('visibility', 'visible')
+        .set('opacity', opacity)
+        .duration('0.25s')
+        .end(function(){
+          if (opacity === 0) {
+            controls.setAttribute('style', '');
+          }
+          tweaking = !tweaking;
+      });
+
+    },
+
+    tweak: function(){
+
+      var doc = document,
+          ampRateControl = doc.getElementById('ampRate'),
+          ampDecayControl = doc.getElementById('ampDecay'),
+          pitchRateControl = doc.getElementById('pitchRate'),
+          oscControl = doc.getElementById('oscControl');
+
+      ampRateControl.value = ampRate*100;
+      ampDecayControl.value = ampDecay*100;
+      pitchRateControl.value = pitchRate*100;
+
+      ampRateControl.addEventListener('change', function(e){
+          ampRate = this.value/100;
+      });
+
+      ampDecayControl.addEventListener('change', function(e){
+          ampDecay = this.value/100;
+      });
+
+      pitchRateControl.addEventListener('change', function(e){
+          pitchRate = this.value/100;
+      });
+
+      oscControl.addEventListener('change', function(e){
+        if (e.target.checked) {
+          osc.disconnect();
+          osc.type = e.target.value;
+          mysteron.connect();
+        }
+      });
 
     },
 

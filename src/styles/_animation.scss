@@ -1,0 +1,55 @@
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@-ms-keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@-o-keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}

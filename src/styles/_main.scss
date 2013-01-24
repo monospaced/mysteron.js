@@ -34,34 +34,6 @@ body {
           user-select: none;
 }
 
-.control {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 44px;
-  height: 44px;
-  color: rgba(255, 255, 255, 0.125);
-  text-align: center;
-  text-decoration: none;
-  font-size: 32px;
-  line-height: 1.375;
-  cursor: pointer;
-  -webkit-transition: color 250ms ease-in-out;
-     -moz-transition: color 250ms ease-in-out;
-      -ms-transition: color 250ms ease-in-out;
-       -o-transition: color 250ms ease-in-out;
-          transition: color 250ms ease-in-out;
-}
-
-.control:hover {
-  color: rgba(255, 255, 255, 0.25);
-  -webkit-transition: color 25ms ease-in-out;
-     -moz-transition: color 25ms ease-in-out;
-      -ms-transition: color 25ms ease-in-out;
-       -o-transition: color 25ms ease-in-out;
-          transition: color 25ms ease-in-out;
-}
-
 .tracker {
   position: absolute;
   top: 50%;
@@ -79,58 +51,116 @@ body {
           animation: pulse 3s infinite ease-in-out;
 }
 
-@-webkit-keyframes pulse {
-  0% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0.25;
-  }
+#toggle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  color: rgba(255, 255, 255, 0.125);
+  text-align: center;
+  text-decoration: none;
+  font-size: 32px;
+  line-height: 1.375;
+  cursor: pointer;
+  -webkit-transition: color 250ms ease-in-out;
+     -moz-transition: color 250ms ease-in-out;
+      -ms-transition: color 250ms ease-in-out;
+       -o-transition: color 250ms ease-in-out;
+          transition: color 250ms ease-in-out;
 }
-@-moz-keyframes pulse {
-  0% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0.25;
-  }
+
+#toggle:hover,
+#toggle:focus {
+  color: rgba(255, 255, 255, 0.25);
+  -webkit-transition: color 25ms ease-in-out;
+     -moz-transition: color 25ms ease-in-out;
+      -ms-transition: color 25ms ease-in-out;
+       -o-transition: color 25ms ease-in-out;
+          transition: color 25ms ease-in-out;
 }
-@-ms-keyframes pulse {
-  0% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0.25;
-  }
+
+#controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  overflow: hidden;
+  height: 100%;
+  background: #000;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+  opacity: 0;
 }
-@-o-keyframes pulse {
-  0% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0.25;
-  }
+
+/*
+ * settings form
+ */
+
+ h1 {
+  margin: 0;
+  padding: 0 0 44px;
+  font-weight: normal;
+  opacity: 0.2;
 }
-@keyframes pulse {
-  0% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0.25;
-  }
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -37.5% 0 0 -37.5%;
+  width: 75%;
+  height: 75%;
 }
+
+fieldset {
+  display: inline-block;
+  margin: 0 0 42px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+label {
+  display: inline-block;
+  margin: 11px;
+}
+
+input[type="range"] {
+  display: block;
+  margin: 5.5px 0 0;
+  border-radius: 0;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0.5;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: $triad;
+  background: rgba($triad, 0.9);
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+input[disabled] {
+  opacity: 0.1;
+}
+
+input[disabled]::-webkit-slider-thumb {
+  cursor: default;
+}
+
+#oscControl label,
+#effects label {
+  cursor: pointer;
+}
+

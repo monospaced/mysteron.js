@@ -8,9 +8,84 @@
   <link rel="icon" href="http://monospaced.co.uk/favicon.ico" type="image/x-icon">
 </head>
 <body>
+
   <div id="amp" class="tracker">✢</div>
   <div id="pitch" class="tracker">•</div>
-  <a id="settings" href="#_" class="control">⚙</a>
+
+  <a id="toggle" href="#_">⚙</a>
+
+  <div id="controls">
+    <form action="./">
+
+      <h1>mysteron.js</h1>
+
+      <fieldset>
+
+        <legend>amplitude</legend>
+
+        <label for="ampRate">
+          rate
+          <input id="ampRate" type="range" min="1" max="100" value="10">
+        </label>
+
+
+        <label for="ampOver">
+          over
+          <input id="ampOver" type="range" disabled>
+        </label>
+
+        <label for="ampDecay">
+          decay
+          <input id="ampDecay" type="range" min="1" max="100" value="40">
+        </label>
+
+      </fieldset>
+
+      <fieldset>
+
+        <legend>pitch</legend>
+
+        <label for="pitchRate">
+          rate
+          <input id="pitchRate" type="range" min="1" max="100" value="20">
+        </label>
+
+        <label for="pitchOver">
+          over
+          <input id="pitchRate" type="range" disabled>
+        </label>
+
+      </fieldset>
+
+      <fieldset id="oscControl">
+
+        <legend>osc</legend>
+
+        <label for="sine">
+          <input id="sine" name="osc" type="radio" value="0" checked>
+          sine
+        </label>
+
+        <label for="square">
+          <input id="square" name="osc" type="radio" value="1">
+          square
+        </label>
+
+        <label for="saw">
+          <input id="saw" name="osc" type="radio" value="2">
+          saw
+        </label>
+
+        <label for="triangle">
+          <input id="triangle" name="osc" type="radio" value="3">
+          triangle
+        </label>
+
+      </fieldset>
+
+    </form>
+  </div>
+
   <script src="src/scripts/lib/move.js"></script>
   <script src="src/scripts/script.js"></script>
 </body>
