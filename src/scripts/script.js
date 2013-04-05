@@ -126,7 +126,15 @@ var mysteron = (function () {
       oscControl.addEventListener('change', function(e){
         if (e.target.checked) {
           osc.disconnect();
-          osc.type = e.target.value;
+          // support both integer and string oscillator types
+          try {
+            // iOS still using old integers
+            osc.type = e.target.value;
+            // but Chrome will throw an error
+          } catch(error){
+            // so use new strings from id attribute
+            osc.type = e.target.id;
+          }
           mysteron.connect();
         }
       });
