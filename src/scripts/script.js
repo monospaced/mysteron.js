@@ -5,7 +5,6 @@ var mysteron = (function () {
   'use strict';
 
   var audio,
-      canvas,
       osc,
       touchpad,
       nodes = {},
