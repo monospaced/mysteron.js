@@ -152,7 +152,7 @@ var mysteron = (function () {
       e.pageY = ampTracker.offsetTop;
       e.pageX = ampTracker.offsetLeft;
 
-      osc.noteOn(0); // iOS 6 needs noteOn to be in a user input event to unmute audio
+      osc.noteOn(0);
 
       mysteron.start(e);
 
