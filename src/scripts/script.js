@@ -127,14 +127,19 @@ var mysteron = (function () {
         if (e.target.checked) {
           osc.disconnect();
           // support both integer and string oscillator types
-          try {
+
+          // Chrome is no longer throwing an error on integer types
+          // so just using strings now, pending check of iOS
+
+          //try {
             // iOS still using old integers
-            osc.type = e.target.value;
+          //  osc.type = e.target.value;
             // but Chrome will throw an error
-          } catch(error){
+          //} catch(error){
             // so use new strings from id attribute
             osc.type = e.target.id;
-          }
+          //}
+
           mysteron.connect();
         }
       });
