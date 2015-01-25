@@ -42,7 +42,7 @@ var mysteron = (function () {
       controls = doc.getElementById('controls');
       toggle = doc.getElementById('toggle');
 
-      nodes.volume = audio.createGainNode();
+      nodes.volume = audio.createGain();
       nodes.volume.gain.value = 0;
 
       mysteron.connect();
