@@ -18,14 +18,13 @@ var mysteron = (function () {
       tweaking = false,
       hasTouch = 'ontouchstart' in window || 'createTouch' in document,
       eventInit = hasTouch ? 'touchend' : 'DOMContentLoaded',
-      eventStart = hasTouch ? 'touchstart' :'mousedown',
+      eventStart = hasTouch ? 'touchstart' : 'mousedown',
       eventMove = hasTouch ? 'touchmove' : 'mousemove',
       eventEnd = hasTouch ? 'touchend' : 'mouseup',
       ampTracker,
       pitchTracker,
       controls,
-      toggle,
-      started;
+      toggle;
 
   return {
 
