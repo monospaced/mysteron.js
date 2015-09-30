@@ -17,13 +17,15 @@ var mysteron = (function () {
       mouseDown = 0,
       tweaking = false,
       hasTouch = 'ontouchstart' in window || 'createTouch' in document,
-      eventStart = hasTouch ? 'touchstart' : 'mousedown',
+      eventInit = hasTouch ? 'touchend' : 'DOMContentLoaded',
+      eventStart = hasTouch ? 'touchstart' :'mousedown',
       eventMove = hasTouch ? 'touchmove' : 'mousemove',
       eventEnd = hasTouch ? 'touchend' : 'mouseup',
       ampTracker,
       pitchTracker,
       controls,
-      toggle;
+      toggle,
+      started;
 
   return {
 
@@ -51,7 +53,7 @@ var mysteron = (function () {
 
       mysteron.tweak();
 
-      mysteron.track();
+      window.addEventListener(eventInit, mysteron.track, false);
 
       touchpad.addEventListener(eventStart, mysteron.start, false);
 
@@ -158,6 +160,8 @@ var mysteron = (function () {
       e.pageX = ampTracker.offsetLeft;
 
       osc.start(0);
+
+      window.removeEventListener(eventInit, mysteron.track, false);
 
       mysteron.start(e);
 
