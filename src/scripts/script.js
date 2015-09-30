@@ -157,7 +157,7 @@ var mysteron = (function () {
       e.pageY = ampTracker.offsetTop;
       e.pageX = ampTracker.offsetLeft;
 
-      osc.noteOn(0);
+      osc.start(0);
 
       mysteron.start(e);
 
